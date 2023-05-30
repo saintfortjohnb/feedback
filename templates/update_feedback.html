@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Update Feedback{% endblock %}
+
+{% block content %}
+<h1>Update Feedback</h1>
+<form method="POST">
+  {{ form.csrf_token }}
+  {{ form.title.label }} : {{ form.title() }}
+  <hr>
+  {{ form.content.label }} :
+  <br>
+  {{ form.content() }}
+  <hr> 
+  <input type="submit" value="Update">
+</form>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<h1>{{ user.first_name }} {{ user.last_name }}</h1>
+<p>Username: {{ user.username }}</p>
+<p>Email: {{ user.email }}</p>
+
+<form method="POST" action="/logout" style="display: inline-block;">
+  <button type="submit" class="btn btn-primary">Logout</button>
+</form>
+
+<h2>Feedbacks:</h2>
+<ul>
+  {% for feedback in feedbacks %}
+    <li>
+      <strong>{{ feedback.title }}</strong>
+      <p>{{ feedback.content }}</p>
+      <a href="/feedback/{{ feedback.id }}/update" class="btn btn-primary">Edit</a>
+      <form method="POST" action="/feedback/{{ feedback.id }}/delete" style="display: inline-block;">
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </form>
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="/users/{{ user.username }}/feedback/add" class="btn btn-success">Add Feedback</a>
+<form method="POST" action="/users/{{ user.username }}/delete" style="display: inline-block;">
+  <button type="submit" class="btn btn-danger">Delete Account</button>
+</form>
+{% endblock %}

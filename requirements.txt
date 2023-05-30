@@ -1,0 +1,7 @@
+Flask
+Flask-WTF
+Flask-SQLAlchemy
+Flask-Bcrypt
+email-validator
+psycopg2-binary
+Flask-Migrate
